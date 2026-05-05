@@ -7,10 +7,10 @@ import { SecurityShield } from './SecurityShield';
 import { useStripeAudit } from '../../hooks/useStripeAudit';
 
 const auditSteps = [
-  { label: 'Authenticate restricted key', icon: KeyRound },
-  { label: 'Read latest Stripe disputes', icon: Search },
-  { label: 'Calculate exposed revenue', icon: DatabaseZap },
-  { label: 'Prepare recovery briefing', icon: Activity },
+  { label: 'AUTHENTICATE RESTRICTED KEY', icon: KeyRound },
+  { label: 'READ LATEST STRIPE DISPUTES', icon: Search },
+  { label: 'CALCULATE EXPOSED REVENUE', icon: DatabaseZap },
+  { label: 'PREPARE RECOVERY DOSSIER', icon: Activity },
 ];
 
 export const ForensicAuditApp = () => {
@@ -23,38 +23,44 @@ export const ForensicAuditApp = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#05070d] text-white">
+    <main className="min-h-screen bg-[#020617] text-slate-300 font-mono">
       <div className="mx-auto grid min-h-screen w-full max-w-7xl gap-6 px-4 py-4 lg:grid-cols-[360px_1fr] lg:px-6">
-        <aside className="border border-slate-800 bg-slate-950/80 p-5 lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)]">
+        
+        {/* SIDEBAR COMMAND CENTER */}
+        <aside className="border border-slate-800 bg-[#020617] p-5 lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)]">
           <div className="flex h-full flex-col">
-            <div className="flex items-center justify-between">
+            
+            {/* STATELESS INDICATOR & BRAND */}
+            <div className="flex items-center justify-between border-b border-slate-800 pb-5">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-blue-300">
-                  Novoriq
-                </p>
-                <h1 className="mt-2 text-2xl font-black tracking-tight text-white">
-                  Forensic Audit Console
+                <h1 className="text-xl font-bold tracking-widest text-white uppercase">
+                  NOVORIQ <span className="text-slate-600">FORENSICS</span>
                 </h1>
               </div>
-              <div className="flex h-11 w-11 items-center justify-center border border-blue-400/30 bg-blue-500/10">
-                <ShieldCheck className="h-5 w-5 text-blue-200" />
+              <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-emerald-400">SYS_ONLINE</span>
               </div>
             </div>
 
-            <p className="mt-5 text-sm leading-6 text-slate-400">
-              Run a stateless Stripe dispute audit and expose unrecovered revenue from the latest dispute window.
+            <p className="mt-5 text-xs leading-6 text-slate-500 uppercase tracking-widest">
+              Autonomous Stripe dispute audit. <br/> Exposing unrecovered revenue.
             </p>
 
-            <div className="mt-6">
+            <div className="mt-6 opacity-80 grayscale">
               <SecurityShield />
             </div>
 
-            <form onSubmit={handleSubmit} className="mt-8 space-y-3">
-              <label htmlFor="stripe-key" className="block text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
-                Stripe restricted key
+            <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+              <label htmlFor="stripe-key" className="block text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
+                Stripe Restricted Key
               </label>
+              
               <div className="relative">
-                <KeyRound className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+                <KeyRound className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-600" />
                 <input
                   id="stripe-key"
                   type="password"
@@ -62,68 +68,84 @@ export const ForensicAuditApp = () => {
                   placeholder="rk_live_..."
                   value={inputKey}
                   onChange={(event) => setInputKey(event.target.value)}
-                  className="h-12 w-full border border-slate-800 bg-black pl-10 pr-3 font-mono text-sm text-white outline-none transition-colors placeholder:text-slate-700 focus:border-blue-400"
+                  className="h-12 w-full border border-slate-800 bg-black/50 pl-10 pr-3 font-mono text-sm text-white outline-none transition-all placeholder:text-slate-800 focus:border-slate-400 focus:bg-black"
                 />
               </div>
+
+              {/* NON-TECH FOUNDER PROTOCOL (The Funnel Patch) */}
+              <div className="mt-3 border border-slate-800/60 bg-black/30 p-3">
+                <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300">
+                  Key Generation Protocol:
+                </p>
+                <ol className="list-decimal pl-4 text-[10px] leading-relaxed tracking-widest text-slate-500 space-y-1">
+                  <li>Open Stripe &gt; Developers &gt; API Keys.</li>
+                  <li>Click <span className="text-slate-300">Create Restricted Key</span>.</li>
+                  <li>Set <span className="text-slate-300">Disputes</span> permission to <span className="text-emerald-400">READ</span>.</li>
+                  <li>Leave all other permissions blank.</li>
+                  <li>Paste the <span className="text-slate-300">rk_live_...</span> key above.</li>
+                </ol>
+              </div>
+
               <button
                 type="submit"
                 disabled={loading || !inputKey.trim()}
-                className="flex h-12 w-full items-center justify-center gap-2 bg-white px-4 text-sm font-black uppercase tracking-[0.12em] text-black transition-colors hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex h-14 w-full items-center justify-center gap-2 bg-white text-[#020617] text-xs font-bold uppercase tracking-[0.2em] transition-all hover:bg-slate-200 disabled:cursor-not-allowed disabled:opacity-50 shadow-[0_0_15px_rgba(255,255,255,0.05)]"
               >
-                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
-                {loading ? 'Scanning' : 'Run Audit'}
+                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShieldCheck className="h-4 w-4" />}
+                {loading ? '[ EXECUTING SCAN ]' : '[ INITIATE SCAN ]'}
               </button>
               {error && (
-                <p className="border border-red-400/30 bg-red-500/10 px-3 py-2 text-xs font-semibold text-red-100">
-                  {error}
+                <p className="border border-red-500/20 bg-red-500/10 px-3 py-2 text-xs font-mono text-red-400">
+                  ERR: {error}
                 </p>
               )}
             </form>
 
-            <div className="mt-8 space-y-3">
+            <div className="mt-8 space-y-2">
               {auditSteps.map((step, index) => {
                 const Icon = step.icon;
                 return (
-                  <div key={step.label} className="flex items-center gap-3 border border-slate-800 bg-slate-900/40 p-3">
-                    <div className="flex h-8 w-8 items-center justify-center bg-slate-950 text-xs font-black text-slate-500">
-                      {index + 1}
+                  <div key={step.label} className="flex items-center gap-3 border border-slate-800/50 bg-black/20 p-3">
+                    <div className="text-[10px] font-bold text-slate-600">
+                      0{index + 1}
                     </div>
-                    <Icon className="h-4 w-4 text-slate-500" />
-                    <span className="text-xs font-semibold text-slate-300">{step.label}</span>
+                    <Icon className="h-3 w-3 text-slate-600" />
+                    <span className="text-[10px] font-bold tracking-widest text-slate-400">{step.label}</span>
                   </div>
                 );
               })}
             </div>
 
-            <p className="mt-auto pt-8 text-xs leading-5 text-slate-600">
-              Keys are sent directly to the audit endpoint for in-memory Stripe retrieval. They are not stored by the forensic scan endpoint.
+            <p className="mt-auto pt-8 text-[10px] uppercase tracking-widest leading-5 text-slate-700">
+              Keys are transmitted directly to the audit node. Memory is purged post-scan. Zero data retention.
             </p>
           </div>
         </aside>
 
+        {/* MAIN DATA TERMINAL */}
         <section className="flex min-h-[calc(100vh-2rem)] flex-col gap-6">
-          <div className="border border-slate-800 bg-slate-950/60 p-5 md:p-8">
+          <div className="border border-slate-800 bg-[#020617] p-5 md:p-8">
             <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500">
-                  Live recovery assessment
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                  TARGET LOCK
                 </p>
-                <h2 className="mt-3 max-w-3xl text-4xl font-black tracking-tight text-white md:text-6xl">
-                  Find dispute leakage before it becomes invisible.
+                <h2 className="mt-3 max-w-3xl text-2xl font-normal tracking-wide text-white uppercase md:text-4xl">
+                  Autonomous <span className="font-bold">Revenue Assessment</span>
                 </h2>
               </div>
-              <div className="grid grid-cols-2 gap-3 sm:min-w-[340px]">
-                <div className="border border-slate-800 bg-black p-4">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
-                    Scan depth
+              <div className="grid grid-cols-2 gap-px bg-slate-800 sm:min-w-[340px] border border-slate-800">
+                <div className="bg-[#020617] p-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
+                    SCAN DEPTH
                   </p>
-                  <p className="mt-2 text-2xl font-black">50</p>
+                  <p className="mt-2 text-xl font-bold text-white">50_REC</p>
                 </div>
-                <div className="border border-slate-800 bg-black p-4">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
-                    Mode
+                <div className="bg-[#020617] p-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
+                    STATUS
                   </p>
-                  <p className="mt-2 text-2xl font-black">Live</p>
+                  <p className="mt-2 text-xl font-bold text-emerald-400">AWAITING_KEY</p>
                 </div>
               </div>
             </div>
@@ -133,36 +155,38 @@ export const ForensicAuditApp = () => {
             <LossTable report={report} />
           ) : (
             <div className="grid flex-1 gap-6 xl:grid-cols-[1fr_320px]">
-              <div className="border border-slate-800 bg-slate-950/50 p-5 md:p-8">
+              <div className="border border-slate-800 bg-[#020617] p-5 md:p-8">
                 <div className="grid h-full place-items-center border border-dashed border-slate-800 bg-black/30 p-8 text-center">
                   <div className="max-w-md">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center border border-blue-400/30 bg-blue-500/10">
-                      <Search className="h-6 w-6 text-blue-200" />
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center border border-slate-800 bg-black">
+                      <Search className="h-5 w-5 text-slate-500" />
                     </div>
-                    <h3 className="mt-5 text-xl font-bold text-white">Awaiting audit key</h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-500">
-                      Enter a restricted Stripe key with dispute read access to populate the revenue exposure table.
+                    <h3 className="mt-6 text-sm font-bold tracking-widest uppercase text-slate-300">SYSTEM READY</h3>
+                    <p className="mt-3 text-xs leading-6 tracking-widest text-slate-600 uppercase">
+                      Enter restricted Stripe key to execute intelligence engine.
                     </p>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-4">
-                <div className="border border-slate-800 bg-slate-950/70 p-5">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
-                    Expected output
+                <div className="border border-slate-800 bg-black/40 p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 border-b border-slate-800 pb-3">
+                    Expected Output
                   </p>
-                  <ul className="mt-4 space-y-3 text-sm text-slate-300">
-                    <li>Total exposed dispute value</li>
-                    <li>Reason codes and dispute status</li>
-                    <li>Timestamped latest dispute ledger</li>
-                    <li>Recovery engine handoff</li>
+                  <ul className="mt-4 space-y-3 text-[10px] uppercase tracking-widest text-slate-400">
+                    <li>&gt; Total Exposed Value</li>
+                    <li>&gt; Reason Codes & Status</li>
+                    <li>&gt; Timestamped Ledger</li>
+                    <li>&gt; AI Handoff Protocol</li>
                   </ul>
                 </div>
-                <div className="border border-emerald-400/30 bg-emerald-500/10 p-5">
-                  <p className="text-sm font-bold text-emerald-100">Security posture</p>
-                  <p className="mt-2 text-sm leading-6 text-emerald-100/70">
-                    The scan uses your key only for the audit request and displays Stripe dispute metadata back in this console.
+                <div className="border border-slate-800 bg-black/40 p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-500 border-b border-slate-800 pb-3">
+                    Security Posture
+                  </p>
+                  <p className="mt-4 text-[10px] uppercase tracking-widest leading-5 text-slate-500">
+                    End-to-end stateless execution. Key data is used strictly for read-only dispute extraction.
                   </p>
                 </div>
               </div>
