@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Novoriq | Autonomous Dispute Assessment",
     description: "Find and recover dispute leakage before it becomes invisible.",
-    url: "https://YOUR-LIVE-NETLIFY-URL.app", // IMPORTANT: Update this to your live URL
+    url: "https://novoriqrevenuerecoveryos.netlify.app", // LIVE URL CONFIGURED
     siteName: "Novoriq",
     type: "website",
   },
@@ -48,8 +48,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Drop your Google Search Console HTML verification tag right below this line later */}
-        {/* <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" /> */}
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="google9dad41a343ba529e" />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
