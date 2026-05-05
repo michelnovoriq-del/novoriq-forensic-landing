@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Novoriq | Autonomous Dispute Assessment",
     description: "Find and recover dispute leakage before it becomes invisible.",
-    url: "https://novoriqrevenuerecoveryos.netlify.app", // LIVE URL CONFIGURED
+    url: "https://novoriqrevenuerecoveryos.netlify.app/", // LIVE URL CONFIGURED
     siteName: "Novoriq",
     type: "website",
   },
