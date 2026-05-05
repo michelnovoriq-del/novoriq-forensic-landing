@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// The $100M Narrative Metadata - Forces Google to index you as a pre-emptive security engine.
+// The $100M Narrative Metadata
 export const metadata: Metadata = {
   title: "Novoriq | Pre-Emptive Stripe Dispute Forensics",
   description: "Autonomous dispute intelligence for SaaS. Capture cryptographic telemetry (IP, AVS, Radar) at checkout and compile evidence dossiers before disputes happen.",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Novoriq | Autonomous Dispute Assessment",
     description: "Find and recover dispute leakage before it becomes invisible.",
-    url: "https://novoriqrevenuerecoveryos.netlify.app/", // LIVE URL CONFIGURED
+    url: "https://novoriqrevenuerecoveryos.netlify.app", 
     siteName: "Novoriq",
     type: "website",
   },
@@ -49,7 +49,7 @@ export default function RootLayout({
     >
       <head>
         {/* Google Search Console Verification */}
-        <meta name="google-site-verification" content="google9dad41a343ba529e" />
+        <meta name="google-site-verification" content="3Ol5qgl_o7B0RxkhTaJsmWwVw1RQsu1N_22dJ8blAmY" />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
