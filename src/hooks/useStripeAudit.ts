@@ -15,6 +15,11 @@ export type AuditReport = {
   disputeCount: number;
   disputes: AuditDispute[];
   securityNote: string;
+  summary?: {
+    reviewedWindow: string;
+    nextStep: string;
+    processingStandard: string;
+  };
 };
 
 const API_BASE_URL =
@@ -29,7 +34,7 @@ export const useStripeAudit = () => {
     const stripeSecretKey = key.trim();
 
     if (!stripeSecretKey) {
-      setError("Enter a Stripe restricted key to run the scan.");
+      setError("Enter a restricted Stripe key to run the audit.");
       return;
     }
 
@@ -45,11 +50,11 @@ export const useStripeAudit = () => {
       setReport(res.data);
     } catch (err: unknown) {
       if (axios.isAxiosError<{ error?: string }>(err)) {
-        setError(err.response?.data?.error || "Connection to forensic node failed.");
+        setError(err.response?.data?.error || "The audit service could not complete the request.");
         return;
       }
 
-      setError("Connection to forensic node failed.");
+      setError("The audit service could not complete the request.");
     } finally {
       setLoading(false);
     }

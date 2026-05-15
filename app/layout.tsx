@@ -12,14 +12,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// The $100M Narrative Metadata
 export const metadata: Metadata = {
-  title: "Novoriq | Pre-Emptive Stripe Dispute Forensics",
-  description: "Autonomous dispute intelligence for SaaS. Capture cryptographic telemetry (IP, AVS, Radar) at checkout and compile evidence dossiers before disputes happen.",
-  keywords: ["Stripe dispute", "chargeback recovery", "revenue leakage", "SaaS dispute management", "payment forensics", "Stripe radar score"],
+  title: "Novoriq | Stripe Dispute Recovery Review",
+  description: "Read-only Stripe dispute assessment for SaaS teams. Review recent disputes, identify at-risk revenue, and prepare evidence documents for recovery workflows.",
+  keywords: ["Stripe dispute", "chargeback recovery", "revenue recovery", "SaaS dispute management", "Stripe dispute evidence", "Stripe radar score"],
   openGraph: {
-    title: "Novoriq | Autonomous Dispute Assessment",
-    description: "Find and recover dispute leakage before it becomes invisible.",
+    title: "Novoriq | Stripe Dispute Recovery Review",
+    description: "Review recent Stripe disputes and prepare the next recovery step.",
     url: "https://novoriqrevenuerecoveryos.netlify.app", 
     siteName: "Novoriq",
     type: "website",
